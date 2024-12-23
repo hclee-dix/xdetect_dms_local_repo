@@ -1,0 +1,32 @@
+crop_thresh: 0.5
+attr_thresh: 0.5
+kpt_thresh: 0.5
+visual: False
+warmup_frame: 10
+
+DET:
+  model_dir: source/model1
+  batch_size: 1
+  enable: True
+
+# MOT:
+#   model_dir: source/model1
+#   tracker_config: dev/ai/common/config/base_mot_tracker_config.yaml
+#   batch_size: 1
+#   skip_frame_num: -1
+#   enable: False
+
+# KPT:
+#   model_dir: source/model2
+#   batch_size: 8
+#   enable: False
+
+SKELETON_ACTION:
+  model_dir: source/model3
+  batch_size: 1
+  max_frames: 30
+  display_frames: 30
+  coord_size: [384, 512]
+  enable: True
+
+

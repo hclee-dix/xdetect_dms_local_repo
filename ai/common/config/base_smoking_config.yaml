@@ -1,0 +1,25 @@
+crop_thresh: 0.5
+attr_thresh: 0.5
+kpt_thresh: 0.5
+visual: False
+warmup_frame: 10
+
+DET:
+  model_dir: source/model1
+  batch_size: 1
+  enable: False
+
+MOT:
+  model_dir: source/model1
+  tracker_config: dev/ai/common/config/base_mot_tracker_config.yaml
+  batch_size: 1
+  skip_frame_num: -1
+  enable: True
+
+ID_BASED_DETECTION:
+  model_dir:  source/model2
+  batch_size: 8
+  threshold: 0.6
+  display_frames: 80
+  skip_frame_num: 2
+  enable: True

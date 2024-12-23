@@ -1,0 +1,25 @@
+crop_thresh: 0.5
+attr_thresh: 0.5
+kpt_thresh: 0.2
+visual: True
+warmup_frame: 30
+
+DET:
+  model_dir: source/model1
+  batch_size: 1
+  enable: False
+
+MOT:
+  model_dir: source/model1
+  tracker_config: dev/ai/common/config/base_mot_tracker_config.yaml
+  batch_size: 1
+  skip_frame_num: -1
+  enable: True
+
+ATTR:
+  model_dir:  source/model2
+  batch_size: 8
+  enable: True
+
+
+
