@@ -1,41 +1,69 @@
-- cairo pycairo pygobject pygtkcompat # not yet
+- cairo pycairo pygobject pygtkcompat 
+# not yet
 > build from install
 
 - torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 > mpmath, typing-extensions, sympy, pillow, nvidia-nvtx-cu11, nvidia-nccl-cu11, nvidia-cusparse-cu11, nvidia-curand-cu11, nvidia-cufft-cu11, nvidia-cuda-runtime-cu11, nvidia-cuda-nvrtc-cu11, nvidia-cuda-cupti-cu11, nvidia-cublas-cu11, networkx, MarkupSafe, fsspec, filelock, triton, nvidia-cusolver-cu11, nvidia-cudnn-cu11, jinja2, torch, torchvision, torchaudio
 
-- ultralytics
+- ultralytics 
+# pip install ultralytics
 > pytz, py-cpuinfo, urllib3, tzdata, tqdm, six, scipy, pyyaml, pyparsing, psutil, packaging, opencv-python, kiwisolver, idna, fonttools, cycler, contourpy, charset-normalizer, certifi, requests, python-dateutil, ultralytics-thop, pandas, matplotlib, seaborn, ultralytics
 
-- pydantic
+- pydantic 
+# pip install pydantic
 > annotated-types-0.7.0 pydantic-2.10.4 pydantic-core-2.27.2 typing-extensions-4.12.2
 
-- moviepy
+- moviepy 
+# pip install moviepy
 > python-dotenv, proglog, imageio_ffmpeg, imageio, decorator, moviepy
 
-- fastapi uvicorn
+- fastapi uvicorn 
+# pip install fastapi
+# pip install "uvicorn[standard]"
 > sniffio, h11, exceptiongroup, click, uvicorn, anyio, starlette, fastapi
 
-- paddle
+- paddlepaddle 
+# https://www.paddlepaddle.org.cn/en/install/quick?docurl=/documentation/docs/en/install/pip/linux-pip_en.html
 > astor-0.8.1, httpcore-1.0.7, httpx-0.28.1, opt-einsum-3.3.0, paddlepaddle-gpu-2.6.1, protobuf-3.20.2, tifffile, PyWavelets, lazy-loader, Shapely, scikit-image, imgaug
 
-- firebase
+- firebase 
+# pip install firebase-admin
 > pyasn1, rsa, pyasn1-modules, protobuf, cachetools, pycparser, proto-plus, grpcio, googleapis-common-protos, google-auth, httplib2, grpcio-status, google-crc32c, google-api-core, cffi, uritemplate, pyjwt, msgpack, google-resumable-media, google-cloud-core, google-auth-httplib2, cryptography, google-cloud-storage, google-cloud-firestore, google-api-python-client, cachecontrol, firebase-admin
 
-- scikit-learn
+- scikit-learn 
+# pip install -U scikit-learn
 > threadpoolctl, joblib, scikit-learn
 
-- iopath
+- iopath 
+# pip install iopath
 > pywin32, portalocker, iopath
 
-- fvcore
+- fvcore 
+# pip install fvcore
 > yacs, termcolor, tabulate, fvcore
 
-- simplejson
+- simplejson 
+# pip install simplejson
 > simplejson
 
-- GPUtil
+- GPUtil 
+# pip install GPUtil
 > GPUtil
 
 - numba, motmetrics, lap
+# pip install numba
+# pip install motmetrics
+# pip install lap
 > numpy, xmltodict, llvmlite, importlib-metadata, numba, motmetrics, lap
+
+######################################
+
+// fix: firebase-admin, paddlepaddle-gpu version conflict
+# pip install grpcio-status==1.32.0
+# pip install protobuf==3.20.2
+# pip install imgaug
+# pip install decord
+
+// installed reference
+# scp -r kleng@172.29.100.51:/home/kleng/xdetect/dev/ai/xFire/net/pytorchvideo/* ./dev/ai/xFire/net/pytorchvideo/
+# scp -r kleng@172.29.100.51:/home/kleng/xdetect/dev/ai/xFire/net/detectron2_repo/* ./dev/ai/xFire/net/detectron2_repo/
