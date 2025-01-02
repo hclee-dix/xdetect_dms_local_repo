@@ -9,7 +9,7 @@ from dev.schema.firebase import IDetectHistory,IDetectHistoryResolution,IDetectH
 from dev.util.file import makeAsset
 from dev.util.firebase import uploadFile
 #
-from dev.util.ops import getFightResultFromSingle,getFightResultFromTotal
+from dev.util.ops import getFightResultFromSingleFrame,getFightResultFromTotalFrame
 #
 
 class XFightDetectorCallback(XCallback):
@@ -29,7 +29,7 @@ class XFightDetectorCallback(XCallback):
         src_path,dst_path = makeAsset('data_out',imageList,{'project_id':self.request.project_id,'detect_model_id':self.request.d_detect_model_id,'ext':self.ext,'fps':self.fps},None,{'history_id':self.request.d_detect_history_id,"format":""})
         storage_url = uploadFile(src_path,dst_path)
         ##
-        result,accuracy,perf = getFightResultFromTotal(perfList,resultList)
+        result,accuracy,perf = getFightResultFromTotalFrame(perfList,resultList)
         history = IDetectHistory(
             org_id=self.request.organization_id,
             project_id=self.request.project_id,
@@ -57,7 +57,7 @@ class XFightDetectorCallback(XCallback):
         hid = self.request.d_detect_history_id if not frame_num else f"{self.request.d_detect_history_id}_{frame_num}"
         src_path,dst_path = makeAsset('data_out',image,{'project_id':self.request.project_id,'detect_model_id':self.request.d_detect_model_id,'ext':'.jpg','fps':0},None,{'history_id':hid,"format":""})
         storage_url = uploadFile(src_path,dst_path)
-        totalResult,accuracy = getFightResultFromSingle(result)
+        totalResult,accuracy = getFightResultFromSingleFrame(result)
         history = IDetectHistory(
             org_id=self.request.organization_id,
             project_id=self.request.project_id,
@@ -89,7 +89,7 @@ class XTestCallback(XCallback):
         ##
         src_path,dst_path = makeAsset('data_out',imageList,{'project_id':'PID','detect_model_id':'MID','ext':'.mp4','fps':30},None,{'history_id':'HID',"format":""},True)
         ##
-        result,accuracy,perf = getFightResultFromTotal(perfList,resultList)
+        result,accuracy,perf = getFightResultFromTotalFrame(perfList,resultList)
         history = IDetectHistory(
             org_id='OID',
             project_id='PID',

@@ -18,6 +18,18 @@ def softmax(data,dim=-1):
         return F.softmax(data,dim)
     else: return data
 
+class Sampler:
+    def __init__(self,cfg):
+        self.cfg = cfg
+        self.N = self.cfg.DATA.NUM_FRAMES * self.cfg.DATA.SAMPLING_RATE
+        self.Q = []
+        self.result = np.empty(0)
+        
+    def getSample(self,frame):
+        self.Q.append(frame)
+        if len(self.Q) < self.N: return False, [], None
+        else: return True, self.Q[:], self.Q.clear()
+
 class EMA:
     def __init__(self, N=1, C=26, window_size=30):
         self.N = N  # 객체 수

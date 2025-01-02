@@ -14,7 +14,7 @@ class XAnnotator:
         self.style = XStyle(self.meta)
         self.labelMap = labelmap
         self.labelColor = labelColor
-        self.initCanvas()
+        # self.initCanvas()
 
 ### init
     def initCanvas(self):
@@ -68,7 +68,10 @@ class XAnnotator:
         self.drawIcon('UserCount',self.style.setColorLevel(icon,self.style.default_icon_style.color),userIconCoord)
         self.userCountCanvas.text(userCountCoord,userCountText,fill=self.style.default_text_style.font_color,font=self.style.default_text,anchor="lt")
 
-    def drawBBox(self):...
+    def drawBBox(self):
+        """
+        this is draw bounding box
+        """
     def drawAlert(self):...
     def drawIcon(self,canvas:Literal['UserCount','Top','BBox','Alert'],icon,coord):
         if canvas == 'UserCount':
@@ -103,6 +106,28 @@ class XAnnotator:
         elif canvas == 'Top':
             self.im = Image.alpha_composite(self.im,self.topLayer)
         return self.im
+    
+    def save(self, canvas:Literal['UserCount', 'Top', 'BBox', 'Alert', 'Image']):
+        if canvas == 'Image':
+            self.im.save('image.png', 'PNG')
+        if canvas == 'UserCount':
+            self.userCountCanvas.save('image.png', 'PNG')
+        elif canvas == 'BBox':
+            self.bboxLayer.save('image.png', 'PNG')
+        elif canvas == 'Alert':
+            self.alertLayer.save('image.png', 'PNG')
+        elif canvas == 'Top':
+            self.topLayer.save('image.png', 'PNG')
+        
+    def show(self, canvas:Literal['UserCount', 'Top', 'BBox', 'Alert', 'Image']):
+        if canvas == 'Image':
+            self.im.show()
+        if canvas == 'UserCount':
+            self.userCountLayer.show()
+        elif canvas == 'BBox':
+            self.bboxLayer.show()
+        elif canvas == 'Top':
+            self.topLayer.show()
     
     def result(self):
         return np.asarray(self.im)

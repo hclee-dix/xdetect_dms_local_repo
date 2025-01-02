@@ -32,11 +32,11 @@ def getFallingResultFromTotal(perfList,resultList):
     return avgResult,accuracy,perf
 
 ## fight result
-def getFightResultFromSingle(result):
+def getFightResultFromSingleFrame(result):
     # [2,] [classes, scores]
     return result,result[1]
 
-def getFightResultFromTotal(perfList,resultList):
+def getFightResultFromTotalFrame(perfList,resultList):
     perf = np.average(perfList)
     result = np.array(resultList)
     # [F,2] [classes, scores]
@@ -44,8 +44,6 @@ def getFightResultFromTotal(perfList,resultList):
     result = result[result[:,0]>0] ## filter fight
     accuracy = np.average(result[:,1],axis=0) ## average accuracy
     return [classes,accuracy],accuracy,perf
-
-
 
 ## object result
 def getTopResultFromSingleFrame(result):

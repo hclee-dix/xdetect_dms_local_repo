@@ -109,6 +109,7 @@ class XFallingDetectorTest(XDetector):
     
     def init_source(self):
         self.capture = XFallingDetectorCapture(self.mode,self.path,self.annotator.meta)
+        self.annotator.initCanvas()
     
     def initHumanDetector(self):
         from ultralytics import YOLO

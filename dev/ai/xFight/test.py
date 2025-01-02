@@ -64,6 +64,7 @@ class XFightDetectorTest(XDetector):
     
     def init_source(self):
         self.capture = XFightDetectorCapture(self.mode,self.path,self.annotator.meta)
+        self.annotator.initCanvas()
     
     def initHumanDetector(self):
         from ultralytics import YOLO

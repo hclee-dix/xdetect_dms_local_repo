@@ -14,6 +14,7 @@ from dev.ai.xFire.detect import createXFireDetector
 from dev.ai.xObject.test import createXObjectDetectorTest
 from dev.ai.xFalling.test import createXFallingDetectorTest
 from dev.ai.xFight.test import createXFightDetectorTest
+from dev.ai.xFire.test import createXFireDetectorTest
 #
 from dev.schema.model import IDetect
 #
@@ -61,7 +62,7 @@ def init_test(type:DetectType,mode:IModeType):
         model_path = '/data2/xdetect_storage/temp/model/FALLING'
         config = 'dev/ai/common/config/base_falling_config.yaml'
         if mode == 'video' or mode == 'stream':
-            path = './dev/core/asset/video/faint1.mp4'
+            path = './dev/core/asset/video/faint2.mp4'
         else:
             raise ValueError("No Supported detect type")
     elif type == 'fight detect':
@@ -71,6 +72,14 @@ def init_test(type:DetectType,mode:IModeType):
             path = './dev/core/asset/video/fight1.mp4'
         else:
             raise ValueError("No Supported detect type")
+    elif type == 'fire detect':
+        model_path = '/data2/xdetect_storage/temp/model/FIRE'
+        config = 'dev/ai/common/config/base_fire_config.yaml'
+        if mode == 'video' or mode == 'stream':
+            path = './dev/core/asset/video/fire1.mp4'
+        else:
+            raise ValueError("No Supported detect type")
+        
     if type == 'animal detect':
         net = createXObjectDetectorTest(model_path,path,mode,[14,15,16,17,18,19,20,21,22,23])
     elif type == 'food detect':
@@ -81,6 +90,8 @@ def init_test(type:DetectType,mode:IModeType):
         net = createXFallingDetectorTest(model_path,path,mode,config)
     elif type == 'fight detect':
         net = createXFightDetectorTest(model_path,path,mode,config)
+    elif type == 'fire detect':
+        net = createXFireDetectorTest(model_path, path, mode, config)
     else:
         raise ValueError("No Supported Type")
     
